@@ -19,4 +19,5 @@
   position: relative;
   flex: 1;
   top: 1.4rem;
+  cursor: pointer;
 }
