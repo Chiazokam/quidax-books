@@ -1,0 +1,15 @@
+@import '../../../vars.css';
+
+.wrapper {
+  flex: 1;
+}
+
+.bookIndexCircle {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--near-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

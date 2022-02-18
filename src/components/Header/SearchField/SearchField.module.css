@@ -1,0 +1,38 @@
+@import '../../../vars.css';
+
+.container {
+  flex: 10;
+}
+
+.inputWrapper {
+  border: 1px solid var(--border-ash);
+  width: 54.1rem;
+  height: 4rem;
+  display: flex;
+}
+
+.input {
+  font-size: 1.4rem;
+  padding-left: 2.1rem;
+  color: var(--faded-text);
+  border: none;
+  flex: 12;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.icon {
+  border-left: 1px solid var(--border-ash);
+  flex: 1;
+  background-color: var(--near-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchIcon {
+  font-size: 2rem;
+  font-weight: 100;
+}
