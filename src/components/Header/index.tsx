@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from './Logo/Logo';
 import SearchField from './SearchField/SearchField';
 import BookIndex from './BookIndex/BookIndex';
-import Cart from './Cart/Cart';
+import Cart from '../Cart/Cart';
 
 import styles from './Header.module.css';
 

@@ -1,0 +1,13 @@
+@import '../../vars.css';
+
+.container {
+  padding-top: 2.7rem;
+  margin-left: 5rem; /*remove this line */
+}
+
+.text {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-left: 5.28rem;
+}
