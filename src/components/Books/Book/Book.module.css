@@ -1,0 +1,64 @@
+@import '../../../vars.css';
+
+.itemWrapper {
+  display: flex;
+  width: 40rem;
+}
+
+.image {
+  flex: 1;
+}
+
+.bookImage {
+  width: 11rem;
+  height: 19rem;
+}
+
+.bookDescription {
+  padding-top: 1rem;
+  font-size: 12px;
+  flex: 2;
+}
+
+.bookTitle {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.author {
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+
+.genre {
+  margin-bottom: 1.9rem;
+}
+
+.price {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 1.8rem;
+}
+
+.copies {
+  color: var(--light-green);
+  margin-left: 0.6rem;
+}
+
+.noCopies {
+  color: var(--red);
+  margin-left: 0.6rem;
+}
+
+.cart {
+  cursor: pointer;
+}
+
+.addToCart {
+  margin-left: 3rem;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+}

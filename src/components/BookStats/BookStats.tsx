@@ -7,9 +7,10 @@ type BookStatsProps = {
   numberOfPurchases: Number;
   likes: Number;
   rating: Number;
+  hasBlackIcons?: Boolean;
 }
 
-const BookStats = ({ numberOfPurchases, likes, rating }: BookStatsProps) => {
+const BookStats = ({ numberOfPurchases, likes, rating, hasBlackIcons }: BookStatsProps) => {
   // const ratingGenerator = () => {
   //   for(let count = 0; count <= rating; count++) {
   //     if ()
@@ -19,11 +20,11 @@ const BookStats = ({ numberOfPurchases, likes, rating }: BookStatsProps) => {
   return (
     <div className={styles.bookStats}>
         <div className={styles.purchases}>
-          <People />
+          <People className={hasBlackIcons && styles.people} />
           <div className={styles.purchaseCount}> {numberOfPurchases} </div>
         </div>
-        <div className={styles.likes}>
-          <Love />
+        <div className={`${styles.likes} ${hasBlackIcons && styles.blackIcons}`}>
+          <Love className={hasBlackIcons && styles.love} />
           <div className={styles.likesCount}> {likes} </div>
         </div>
         <div className={styles.rating}>

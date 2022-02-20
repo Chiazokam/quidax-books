@@ -2,6 +2,7 @@
 
 .bookStats {
   display: flex;
+  width: 19.4rem;
 }
 
 .purchases, .likes {
@@ -12,16 +13,20 @@
   border-right: 1px solid var(--divider);
 }
 
+.blackIcons {
+  border-right: 1px solid var(--border);
+}
+
 .rating {
   flex: 4;
 }
 
 .purchaseCount {
-  margin-top: 0.8rem;
+  margin-top: 0.4rem;
 }
 
 .likesCount {
-  margin-top: 0.8rem;
+  margin-top: 0.4rem;
 }
 
 .ratingTitle {
@@ -34,4 +39,10 @@
 
 .ratingValue {
   font-weight: 400;
+}
+
+.people path, .love path {
+  fill: var(--black);
+  stroke: var(--black);
+  stroke-width: 0.1px;
 }

@@ -20,4 +20,10 @@
   flex: 1;
   top: 1.4rem;
   cursor: pointer;
+  width: 1.3rem;
+  height: 1.5rem;
+}
+
+.smallCart {
+  transform: scale(0.8)
 }

@@ -13,7 +13,7 @@ const Book = () => {
       onMouseLeave={() => setShowDescription(false)}
     > 
       {showDescription && <BookHover
-        status='Available'
+        availableCopies={10}
         bookTitle= 'Big Magic'
         author='Elizabeth Gilbert'
         year='2019'
