@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as CartSvg } from '../../../assets/cart.svg';
+import { ReactComponent as CartSvg } from '../../assets/cart.svg';
 import styles from './Cart.module.css'
 
 type CartProps = {

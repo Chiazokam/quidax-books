@@ -2,6 +2,7 @@
 
 .container {
   padding-top: 2.7rem;
+  margin-left: 5rem; /*remove this line */
 }
 
 .text {
