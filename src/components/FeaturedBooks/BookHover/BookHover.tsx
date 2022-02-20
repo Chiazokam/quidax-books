@@ -3,7 +3,7 @@ import BookStats from '../../BookStats/BookStats';
 import styles from './BookHover.module.css';
 
 type BookHoverProps = {
-  status: String;
+  availableCopies: Number;
   bookTitle: String;
   author: String;
   year: String;
@@ -15,11 +15,15 @@ type BookHoverProps = {
 }
 
 const BookHover = (props: BookHoverProps) => {
-  const { status, bookTitle, author, year, genre, tags, numberOfPurchases, likes, rating } = props;
+  const { availableCopies, bookTitle, author, year, genre, tags, numberOfPurchases, likes, rating } = props;
 
   return (
     <div className={styles.hover}>
-      <div className={styles.hoverStatus}>{status}</div>
+      {
+        availableCopies > 0 ? 
+        <span className={styles.available}>Available</span> : 
+        <span className={styles.notAvailable}>Out of Stock</span>
+      }
       <div className={styles.bookTitle}>{bookTitle}</div>
       <div className={styles.author}>{author}</div>
       <div className={styles.year}>{year}</div>

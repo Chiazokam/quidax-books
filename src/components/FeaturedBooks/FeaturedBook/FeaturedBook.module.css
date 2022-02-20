@@ -1,5 +1,6 @@
 .imageWrapper {
-  position: relative;
+  /* position: relative; */
+  width: 23rem;
 }
 
 .bookImage {

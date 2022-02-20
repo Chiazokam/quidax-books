@@ -12,15 +12,19 @@
   font-size: 12px;
 }
 
-.hoverStatus {
+.available {
   color: var(--light-green);
-  margin-bottom: 1.9rem;
+}
+
+.notAvailable {
+  color: var(--red);
 }
 
 .bookTitle {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 0.6rem;
+  margin-top: 0.9rem;
 }
 
 .author, .year {
