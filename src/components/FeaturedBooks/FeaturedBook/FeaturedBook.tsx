@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import book from '../../../assets/book.jpg';
 import BookHover from '../BookHover/BookHover';
 import styles from './FeaturedBook.module.css';
 
-const Book = () => {
+type BookProps = {
+  book: any;
+}
+
+const Book = ({ book }: BookProps) => {
   const [showDescription, setShowDescription] = useState(false);
   return (
     <div
@@ -13,17 +16,17 @@ const Book = () => {
       onMouseLeave={() => setShowDescription(false)}
     > 
       {showDescription && <BookHover
-        availableCopies={10}
-        bookTitle= 'Big Magic'
-        author='Elizabeth Gilbert'
-        year='2019'
-        genre='Motivational'
-        tags='Creativity, Better Living'
-        numberOfPurchases={14}
-        likes={11}
-        rating={4.0}
+        availableCopies={book.available_copies}
+        bookTitle= {book.title}
+        author={book.author}
+        year={book.release_date}
+        genre={book.genres.length > 0 ? book.genres.join(', ') : '-'}
+        tags={book.tags.length > 0 ? book.tags.join(', ') : '-'}
+        numberOfPurchases={book.number_of_purchases}
+        likes={book.likes}
+        rating={book.rating}
       />}
-      <img alt='book' src={book} className={styles.bookImage}/>
+      <img alt='book' src={book.image_url} className={styles.bookImage}/>
     </div>
   )
 }

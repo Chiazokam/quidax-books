@@ -2,15 +2,14 @@ import React from 'react';
 
 import Header from './components/Header';
 import FeaturedBooks from './components/FeaturedBooks';
-import Books from './components/Books';
-import BookStats from './components/BookStats/BookStats';
+import { books } from './utils/dummyBooks';
 
-function App() {
+const App = () => {
+
   return (
     <div>
       <Header />
-      <FeaturedBooks />
-      <Books />
+      <FeaturedBooks books={books} />
     </div>
   );
 }
