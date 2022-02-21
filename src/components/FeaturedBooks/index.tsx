@@ -16,14 +16,11 @@ const FeaturedBooks = ({ books }: FeaturedBooksProps) => {
       <Carousel>
         {books.map((book: any) => {
           return (
-            <div>
-              <div style={{padding: 8}}>
-                <FeaturedBook book={book} />
-              </div>
-            </div>
+            <FeaturedBook book={book} />
           )
         })}
       </Carousel>
+
     </div>
   )
 }

@@ -1,0 +1,19 @@
+@import '../../../vars.css';
+
+.dotsWrapper {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.9rem;
+  background-color: var(--border-ash);
+}
+
+.activeDot {
+  background-color: var(--light-green);
+}
