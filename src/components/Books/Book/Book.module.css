@@ -3,6 +3,7 @@
 .itemWrapper {
   display: flex;
   width: 40rem;
+  height: 19rem;
 }
 
 .image {
@@ -17,7 +18,8 @@
 .bookDescription {
   padding-top: 1rem;
   font-size: 12px;
-  flex: 2;
+  flex: 3;
+  margin-left: 1.5rem;
 }
 
 .bookTitle {
@@ -43,12 +45,12 @@
 
 .copies {
   color: var(--light-green);
-  margin-left: 0.6rem;
+  margin-left: 1rem;
 }
 
 .noCopies {
   color: var(--red);
-  margin-left: 0.6rem;
+  margin-left: 1rem;
 }
 
 .cart {
