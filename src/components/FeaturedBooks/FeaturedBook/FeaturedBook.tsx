@@ -3,7 +3,7 @@ import BookHover from '../BookHover/BookHover';
 import styles from './FeaturedBook.module.css';
 
 type BookProps = {
-  book: any;
+  book: BookType;
 }
 
 const Book = ({ book }: BookProps) => {
@@ -15,17 +15,7 @@ const Book = ({ book }: BookProps) => {
       onMouseEnter={() => setShowDescription(true)}
       onMouseLeave={() => setShowDescription(false)}
     > 
-      {showDescription && <BookHover
-        availableCopies={book.available_copies}
-        bookTitle= {book.title}
-        author={book.author}
-        year={book.release_date}
-        genre={book.genres.length > 0 ? book.genres.join(', ') : '-'}
-        tags={book.tags.length > 0 ? book.tags.join(', ') : '-'}
-        numberOfPurchases={book.number_of_purchases}
-        likes={book.likes}
-        rating={book.rating}
-      />}
+      {showDescription && <BookHover book={book}/>}
       <img alt='book' src={book.image_url} className={styles.bookImage}/>
     </div>
   )

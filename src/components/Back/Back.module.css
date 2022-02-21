@@ -1,0 +1,12 @@
+@import '../../vars.css';
+
+.backSvg {
+  stroke-width: 0.8px;
+}
+
+.backText {
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 1.3rem;
+  margin-bottom: 1rem;
+}
