@@ -6,10 +6,11 @@ import styles from './Carousel.module.css';
 
 type CarouselProps = {
   children: any;
+  itemCount: Number;
 }
 
 const Carousel = (props: CarouselProps) => {
-  const { children } = props;
+  const { children, itemCount } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null)
@@ -81,7 +82,7 @@ const Carousel = (props: CarouselProps) => {
 
         </div>
       </div>
-      <Dots currentIndex={currentIndex} />
+      <Dots currentIndex={currentIndex} dotsCount={itemCount} />
     </>
   )
 }

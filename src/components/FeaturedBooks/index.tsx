@@ -12,11 +12,13 @@ const FeaturedBooks = ({ books }: FeaturedBooksProps) => {
   return (
     <div className={styles.container}>
       <span className={styles.text}>Featured Books</span>
-      <HorizontalLine />
-      <Carousel>
+      <div className={styles.featuredBooksLine}>
+        <HorizontalLine />
+      </div>
+      <Carousel itemCount={books.length}>
         {books.map((book: any) => {
           return (
-            <FeaturedBook book={book} />
+            <FeaturedBook key={book.id} book={book} />
           )
         })}
       </Carousel>
