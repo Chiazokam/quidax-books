@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as LeftArrow } from '../../assets/leftArrow.svg';
 import { ReactComponent as RightArrow } from '../../assets/rightArrow.svg';
+import Dots from './Dots/Dots';
 import styles from './Carousel.module.css';
 
 type CarouselProps = {
@@ -13,9 +14,9 @@ const Carousel = (props: CarouselProps) => {
   const [length, setLength] = useState(children.length);
   const [touchPosition, setTouchPosition] = useState(null)
 
-  useEffect(() => {
-    setLength(children.length)
-  }, [children])
+  // useEffect(() => {
+  //   setLength(children.length)
+  // }, [children])
 
   const next = () => {
     if (currentIndex < (length - 1)) {
@@ -56,28 +57,32 @@ const Carousel = (props: CarouselProps) => {
   }
 
   return (
-    <div className={styles.carouselContainer}>
-      <div className={styles.carouselWrapper}>
-        {currentIndex > 0 && <button onClick={prev} className={styles.leftArrow}>
-          <LeftArrow />
-        </button>}
+    <>
+      <div className={styles.carousel}>
+        <div className={styles.carouselWrapper}>
+          {currentIndex > 0 && 
+          <button onClick={prev} className={styles.leftArrow}>
+            <LeftArrow />
+          </button>}
 
-        <div
-          className={styles.carouselContentWrapper}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-        >
-          <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / 6)}%)` }}>
-            {children}
+          <div
+            className={styles.carouselContentWrapper}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+          >
+            <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / 6)}%)` }}>
+              {children}
+            </div>
           </div>
+
+          {currentIndex < (length - 1) && <button onClick={next} className={styles.rightArrow}>
+            <RightArrow />
+          </button>}
+
         </div>
-
-        {currentIndex < (length - 1) && <button onClick={next} className={styles.rightArrow}>
-          <RightArrow />
-        </button>}
-
       </div>
-    </div>
+      <Dots currentIndex={currentIndex} />
+    </>
   )
 }
 
