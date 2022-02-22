@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import FeaturedBooks from './components/FeaturedBooks';
-import Books from './components/Books';
+import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Home from './containers/Home';
 import Cart from './components/Cart';
 import CartBackdrop from './components/Cart/CartBackdrop/CartBackdrop';
+import DetailsView from './containers/DetailsView';
 import { books as dummybooks } from './utils/dummyBooks';
 
 const App = () => {
-  // Create hook to get the books data
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [selectedBooks, setSelectedBooks] = useState<CartItem[]>([]);
   const [books, setBooks] = useState(dummybooks);
-
-  const addToCartHandler = (book: CartItem) => {
-    if (!isCartOpen) {
-      setIsCartOpen(true);
-    }
-    setSelectedBooks([...selectedBooks, book])
-  }
-
-  const openCart = () => {
-    setIsCartOpen(true)
-  }
+  const [selectedBooks, setSelectedBooks] = useState<CartItem[]>([]);
 
   const removeItemFromCart = (cartItem: CartItem) => {
     const newSelectedBooks = selectedBooks.filter((book: CartItem) => book.id !== cartItem.id);
@@ -46,13 +34,20 @@ const App = () => {
     setBooks(() => books);
   }
 
-  useEffect (() => {
-    setBooks(books)
-  }, [books])
+  const openCart = () => {
+    setIsCartOpen(true)
+  }
+
+  const addToCartHandler = (book: CartItem) => {
+    if (!isCartOpen) {
+      setIsCartOpen(true);
+    }
+    setSelectedBooks([...selectedBooks, book])
+  }
 
   return (
     <div style={{ height: '100%' }}>
-      {isCartOpen && 
+       {isCartOpen && 
         <>
           <Cart
             closeCart={() => setIsCartOpen(false)}
@@ -64,9 +59,11 @@ const App = () => {
           <CartBackdrop closeCart={() => setIsCartOpen(false)} />
         </>
       }
-      <Header openCart={openCart} cartItemsCount={selectedBooks.length} />
-      <FeaturedBooks books={books} />
-      <Books books={books} addToCart={addToCartHandler} />
+      
+      <Routes>
+        <Route index element={<Home openCart={openCart} selectedBooks={selectedBooks} addToCartHandler={addToCartHandler} books={books} />}></Route>
+        <Route path='books/:id' element={<DetailsView openCart={openCart} />} />
+      </Routes>
     </div>
   );
 }

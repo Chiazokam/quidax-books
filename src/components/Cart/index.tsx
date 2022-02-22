@@ -3,6 +3,7 @@ import styles from './Cart.module.css';
 import { ReactComponent as CartIcon } from '../../assets/whitecart.svg';
 import CartHeader from './CartHeader/CartHeader';
 import CartItem from './CartItem/CartItem';
+import Button from '../Button';
 
 type CartProps = {
   closeCart: React.MouseEventHandler<HTMLDivElement>;
@@ -24,6 +25,7 @@ const Cart = ({ closeCart, isCartOpen, selectedBooks, removeItemFromCart, update
   return (
     <div className={`${styles.cartWrapper} ${isCartOpen && styles.slideIn}`}>
       <CartHeader closeCart={closeCart} />
+      <div className={styles.itemsWrapper}>
       {selectedBooks.length > 0 ? selectedBooks.map((book: CartItem) => {
         return (
           <CartItem
@@ -37,18 +39,16 @@ const Cart = ({ closeCart, isCartOpen, selectedBooks, removeItemFromCart, update
       }) : 
         <div className={styles.empty}>No books in your cart</div>
       }
-      {selectedBooks.length > 0 &&
-      <>
-        <div className={styles.total}> 
-          <div className={styles.subtotal}>Subtotal</div>
-          <div className={styles.subtotalValue}>${subtotal.toFixed(2)}</div>
-        </div>
-        <button className={styles.button}>
-          <CartIcon className={styles.cart} />
-          <span>Proceed To Checkout</span>
-        </button>
-      </>
+        {selectedBooks.length > 0 &&
+        <>
+          <div className={styles.total}> 
+            <div className={styles.subtotal}>Subtotal</div>
+            <div className={styles.subtotalValue}>${subtotal.toFixed(2)}</div>
+          </div>
+          <Button size='bg' text='Proceed To Checkout' />
+        </>
       }
+      </div>
     </div>
   )
 }

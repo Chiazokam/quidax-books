@@ -1,6 +1,8 @@
 declare interface BookType {
   id: string
   title: string;
+  subtitle: string;
+  publisher: string;
   author: string;
   release_date: string;
   number_of_purchases: number;

@@ -79,11 +79,6 @@
 }
 
 .line {
-  border-top: 1px solid var(--border);
   margin-right: 4.0rem;
   margin-top: 2.4rem;
-}
-
-.container {
-  margin-left: 3.3rem;
 }

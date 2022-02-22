@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './CartItem.module.css';
 import useStorage from '../../../hooks/useStorage';
+import HorizontalLine from '../../HorizontalLine';
 
 
 type CartItemProps = {
@@ -46,7 +47,7 @@ const CartItem = ({ book, removeItemFromCart, updateAvailableCopies, addAllCartP
   // }, [updateAvailableCopies, id])
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.item}>
         <div className={styles.book}>
           <div className={styles.imageWrapper}><img className={styles.image} src={image_url} alt={title} /></div>
@@ -66,8 +67,10 @@ const CartItem = ({ book, removeItemFromCart, updateAvailableCopies, addAllCartP
 
         </div>
       </div>
-      <div className={styles.line}/>
-    </div>
+      <div className={styles.line}>
+         <HorizontalLine />
+      </div>
+    </>
   )
 }
 
