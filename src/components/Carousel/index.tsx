@@ -5,14 +5,14 @@ import Dots from './Dots/Dots';
 import styles from './Carousel.module.css';
 
 type CarouselProps = {
-  children: any;
-  itemCount: Number;
+  children: JSX.Element[];
+  itemCount: number;
 }
 
 const Carousel = (props: CarouselProps) => {
   const { children, itemCount } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [length, setLength] = useState(children.length);
+  const [length, setLength] = useState(itemCount);
   const [touchPosition, setTouchPosition] = useState(null)
 
   // useEffect(() => {
@@ -31,31 +31,31 @@ const Carousel = (props: CarouselProps) => {
     }
   }
 
-  const handleTouchStart = (e: any) => {
-    const touchDown = e.touches[0].clientX
-    setTouchPosition(touchDown)
-}
+//   const handleTouchStart = (e: React.TouchEvent) => {
+//     const touchDown = e.touches[0].clientX
+//     // setTouchPosition(touchDown)
+// }
 
-  const handleTouchMove = (e: any) => {
-    const touchDown = touchPosition
+//   const handleTouchMove = (e: any) => {
+//     const touchDown = touchPosition
 
-    if(touchDown === null) {
-        return
-    }
+//     if(touchDown === null) {
+//         return
+//     }
 
-    const currentTouch = e.touches[0].clientX
-    const diff = touchDown - currentTouch
+//     const currentTouch = e.touches[0].clientX
+//     const diff = touchDown - currentTouch
 
-    if (diff > 5) {
-        next()
-    }
+//     if (diff > 5) {
+//         next()
+//     }
 
-    if (diff < -5) {
-        prev()
-    }
+//     if (diff < -5) {
+//         prev()
+//     }
 
-    setTouchPosition(null)
-  }
+//     setTouchPosition(null)
+//   }
 
   return (
     <>
@@ -68,8 +68,8 @@ const Carousel = (props: CarouselProps) => {
 
           <div
             className={styles.carouselContentWrapper}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
+            // onTouchStart={handleTouchStart}
+            // onTouchMove={handleTouchMove}
           >
             <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / 6)}%)` }}>
               {children}

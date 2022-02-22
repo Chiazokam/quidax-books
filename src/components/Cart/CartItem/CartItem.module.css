@@ -1,0 +1,89 @@
+@import '../../../vars.css';
+
+.item {
+  display: flex;
+  margin-top: 2.4rem;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.book {
+  display: flex;
+  flex: 2;
+}
+
+.imageWrapper {
+  flex: 1;
+  width: 6rem;
+  height: 9rem;
+}
+
+.image {
+  width: 6rem;
+  height: 9rem;
+}
+
+.description {
+  flex: 2;
+  margin-left: -2rem;
+}
+
+.price {
+  flex: 1;
+  text-align: right;
+  margin-right: 4.0rem;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.author {
+  margin-bottom: 3.2rem;
+}
+
+.remove {
+  cursor: pointer;
+}
+
+.singlePrice {
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.addMinus {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--border-ash);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--near-white);
+  margin-bottom: 1.7rem;
+  cursor: pointer;
+}
+
+.number {
+  background-color: var(--white);
+  border-left: none;
+  border-right: none;
+  cursor: unset;
+}
+
+.bookPrice {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.line {
+  border-top: 1px solid var(--border);
+  margin-right: 4.0rem;
+  margin-top: 2.4rem;
+}
+
+.container {
+  margin-left: 3.3rem;
+}

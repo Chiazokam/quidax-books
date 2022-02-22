@@ -1,29 +1,68 @@
 @import '../../vars.css';
 
-.itemCount {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: var(--light-green);
-  position: absolute;
-  top: -9px;
-  left: 10px;
-  margin-right: 2rem;
+.cartWrapper {
+  height: 100%;
+  background-color: var(--white);
+  position: fixed;
+  overflow: scroll;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 200;
+  box-shadow: 0px 0px 40px 0 rgba(0, 0, 0, 0.05);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in;
+  width: 48rem;
+}
+
+.slideIn {
+  transform: translateX(0);
+}
+
+.total {
+  display: flex;
+  margin-left: 3.3rem;
+  margin-top: 5rem;
+  margin-bottom: 1.9rem;
+}
+
+.subtotal, .empty {
+  flex: 2;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 2.3rem;
+}
+
+.subtotalValue {
+  flex: 1;
+  font-weight: 300;
+  font-size: 36px;
+}
+
+.button {
+  margin-left: 3.3rem;
+  margin-bottom: 5rem;
+  background-color: var(--black);
+  color: var(--white);
+  width: 40.7rem;
+  height: 7rem;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
 }
 
 .cart {
-  position: relative;
   flex: 1;
-  top: 1.4rem;
-  cursor: pointer;
-  width: 1.3rem;
-  height: 1.5rem;
 }
 
-.smallCart {
-  transform: scale(0.8)
+.button span {
+  flex: 6;
+}
+
+.empty {
+  margin-left: 3.3rem;
+  margin-top: 3.2rem;
 }

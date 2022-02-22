@@ -1,0 +1,31 @@
+.cartHeader {
+  display: flex;
+  height: 10rem;
+  border-bottom: 1px solid var(--border);
+  justify-content: center;
+  align-items: center;
+  padding: 0 4.4rem;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 27px 1px;
+}
+
+.back {
+  flex: 1;
+  cursor: pointer;
+}
+
+.yourCart {
+  flex: 1;
+  display: flex;
+}
+
+.cartText {
+  font-weight: 700;
+  font-size: 14px;
+  flex: 4;
+  text-align: right;
+}
+
+.cartIcon {
+  flex: 1;
+}

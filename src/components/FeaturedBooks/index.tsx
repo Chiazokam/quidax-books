@@ -5,7 +5,7 @@ import FeaturedBook from './FeaturedBook/FeaturedBook';
 import Carousel from '../Carousel';
 
 type FeaturedBooksProps = {
-  books: any;
+  books: BookType[];
 }
 
 const FeaturedBooks = ({ books }: FeaturedBooksProps) => {
@@ -16,7 +16,7 @@ const FeaturedBooks = ({ books }: FeaturedBooksProps) => {
         <HorizontalLine />
       </div>
       <Carousel itemCount={books.length}>
-        {books.map((book: any) => {
+        {books.map((book: BookType) => {
           return (
             <FeaturedBook key={book.id} book={book} />
           )

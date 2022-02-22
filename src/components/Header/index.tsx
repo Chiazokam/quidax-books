@@ -3,17 +3,22 @@ import React from 'react';
 import Logo from './Logo/Logo';
 import SearchField from './SearchField/SearchField';
 import BookIndex from './BookIndex/BookIndex';
-import Cart from '../Cart/Cart';
+import Cart from '../CartIcon/CartIcon';
 
 import styles from './Header.module.css';
 
-const Header = () => {
+type HeaderProps = {
+  openCart: React.MouseEventHandler<HTMLDivElement>;
+  cartItemsCount: number;
+}
+
+const Header = ({ openCart, cartItemsCount }: HeaderProps) => {
   return (
     <div className={styles.header}>
       <Logo />
       <SearchField />
       <BookIndex />
-      <Cart withItemCount itemCount={4} />
+      <Cart withItemCount itemCount={cartItemsCount} openCart={openCart} />
     </div>
   );
 }

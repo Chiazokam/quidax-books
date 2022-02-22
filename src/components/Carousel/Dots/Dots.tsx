@@ -9,7 +9,7 @@ type DotsProps = {
 const Dots = ({ currentIndex, dotsCount }: DotsProps) => {
   return (
     <div className={styles.dotsWrapper}>
-      {[...new Array(dotsCount)].map((dot, index) => <div className={`${styles.dot} ${currentIndex === index && styles.activeDot}`}></div>)}
+      {[...new Array(dotsCount)].map((dot, index) => <div key={`${dot}-${index}`} className={`${styles.dot} ${currentIndex === index && styles.activeDot}`}></div>)}
     </div>
   )
 }
