@@ -2,8 +2,7 @@
 
 .item {
   display: flex;
-  margin-top: 3.2rem;
-  margin-left: 3.3rem;
+  margin-top: 2.4rem;
   font-size: 12px;
   font-weight: 400;
 }
@@ -26,6 +25,7 @@
 
 .description {
   flex: 2;
+  margin-left: -2rem;
 }
 
 .price {
@@ -76,4 +76,14 @@
 .bookPrice {
   font-weight: 700;
   font-size: 14px;
+}
+
+.line {
+  border-top: 1px solid var(--border);
+  margin-right: 4.0rem;
+  margin-top: 2.4rem;
+}
+
+.container {
+  margin-left: 3.3rem;
 }
