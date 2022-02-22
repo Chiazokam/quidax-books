@@ -2,6 +2,8 @@ export const books = [
   {
     id: 'c1eefd6b-d0fa-40fe-8594-1487e4be3731',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,
@@ -18,6 +20,8 @@ export const books = [
   {
     id: '06130e95-d336-448e-ae71-ffe533aafdfc',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,
@@ -35,6 +39,8 @@ export const books = [
     id: 'ec15e763-6858-4c72-9a8b-ade83ccae3e2',
     title: 'Effective Python',
     author: 'William Gibson',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     release_date: '2017',
     number_of_purchases: 23,
     likes: 19,
@@ -50,6 +56,8 @@ export const books = [
   {
     id: '486c5da8-a39b-4662-9a4e-6f235b291065',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,
@@ -66,6 +74,8 @@ export const books = [
   {
     id: 'fd01cdbf-bf6b-47cc-a309-777b5d12228e',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,
@@ -82,6 +92,8 @@ export const books = [
   {
     id: 'dda4374d-e4eb-45b8-910c-7b708190140b',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 0,
@@ -98,6 +110,8 @@ export const books = [
   {
     id: '30fdf7ca-4579-402c-80a0-3efb88d4623f',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,
@@ -114,6 +128,8 @@ export const books = [
   {
     id: '52578046-5e1b-40b7-88ae-71f8c9fde59e',
     title: 'Effective Python',
+    subtitle: 'Creative Living Beyond Fear',
+    publisher: 'Crane books',
     author: 'William Gibson',
     release_date: '2017',
     number_of_purchases: 23,

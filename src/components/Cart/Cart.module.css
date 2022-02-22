@@ -19,11 +19,14 @@
   transform: translateX(0);
 }
 
+.itemsWrapper {
+  margin-left: 3.3rem;
+}
+
 .total {
   display: flex;
-  margin-left: 3.3rem;
-  margin-top: 5rem;
-  margin-bottom: 1.9rem;
+  margin: 5rem 0 1.9rem 0;
+  width: 40.7rem;
 }
 
 .subtotal, .empty {
@@ -37,32 +40,9 @@
   flex: 1;
   font-weight: 300;
   font-size: 36px;
-}
-
-.button {
-  margin-left: 3.3rem;
-  margin-bottom: 5rem;
-  background-color: var(--black);
-  color: var(--white);
-  width: 40.7rem;
-  height: 7rem;
-  font-size: 18px;
-  font-weight: 700;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cart {
-  flex: 1;
-}
-
-.button span {
-  flex: 6;
+  text-align: right;
 }
 
 .empty {
-  margin-left: 3.3rem;
   margin-top: 3.2rem;
 }

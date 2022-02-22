@@ -1,0 +1,45 @@
+
+.leftpane {
+  padding: 3.8rem 4.0rem;
+}
+
+.backText {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.backIcon {
+  cursor: pointer;
+  margin-right: 3rem;
+}
+
+.back {
+  cursor: pointer;
+}
+
+.image {
+  margin-top: 3.8rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 24.3rem;
+  height: 36.45rem;
+}
+
+.availableCopies {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 7.35rem;
+}
+
+.available {
+  color: var(--light-green);
+}
+
+.notAvailable {
+  color: var(--red);
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 300;
+  margin: 0.6rem 0 2rem;
+}

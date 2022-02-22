@@ -1,0 +1,46 @@
+.rightpane {
+  margin-top: 9rem;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.year {
+  font-weight: 400;
+}
+
+.bookdetails {
+  display: flex;
+}
+
+.genres, .tags {
+  flex: 1;
+}
+
+.stats, .publisher, .release {
+  flex: 1;
+}
+
+.detailsHead {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.detailsValue {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.description {
+  font-size: 14px;
+}

@@ -6,9 +6,10 @@ import HorizontalLine from '../HorizontalLine';
 type BooksProps = {
   books: BookType[];
   addToCart: (book: CartItem) => void;
+  openBookDetails: Function;
 }
 
-const Books = ({ books, addToCart }: BooksProps) => {
+const Books = ({ books, addToCart, openBookDetails }: BooksProps) => {
   return (
     <div className={styles.container}>
       <span className={styles.text}>All Books</span>
@@ -20,6 +21,7 @@ const Books = ({ books, addToCart }: BooksProps) => {
               <Book
                 book={book}
                 addToCart={addToCart}
+                openBookDetails={openBookDetails}
               />
             </div>
           )

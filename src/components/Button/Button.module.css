@@ -1,0 +1,31 @@
+.button {
+  /* margin-left: 3.3rem; */
+  margin-bottom: 5rem;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cart {
+  flex: 1;
+}
+
+.text {
+  flex: 5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.bg {
+  width: 40.7rem;
+  height: 7rem;
+}
+
+.sm {
+  width: 24.3rem;
+  height: 7rem;
+}
