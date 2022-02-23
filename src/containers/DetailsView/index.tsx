@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useBookQuery, Books } from '../../generated/graphql';
-import Header from '../../components/Header';
 import DetailsViewComponent from '../../components/DetailsView';
 
 type DetailsViewProps = {
@@ -24,8 +23,6 @@ const DetailsView = ({ openCart }: DetailsViewProps) => {
 
   return (
     <div style={{ height: '100%' }}>
-      <Header openCart={openCart} cartItemsCount={3} />
-
       {book && <DetailsViewComponent
         book={book}
         openCart={openCart as unknown as React.MouseEventHandler<HTMLButtonElement> | undefined}

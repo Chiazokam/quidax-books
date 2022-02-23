@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header';
 import FeaturedBooks from '../../components/FeaturedBooks';
 import Books from '../../components/Books';
-import { Books as Book} from '../../generated/graphql'
+import { Books as Book } from '../../generated/graphql'
 
 type HomeProps = {
   openCart: React.MouseEventHandler<HTMLDivElement>;
@@ -13,9 +12,23 @@ type HomeProps = {
   featuredBooks: Book[];
   dataLoading: boolean;
   featuredLoading: boolean;
+  isUserSearching: boolean;
+  searchValue: string | undefined;
+  searchDataCount: number;
 }
 
-const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, featuredBooks, featuredLoading }: HomeProps) => {
+const Home = ({
+  openCart,
+  addToCartHandler,
+  selectedBooks,
+  books,
+  dataLoading,
+  featuredBooks,
+  featuredLoading,
+  isUserSearching,
+  searchValue,
+  searchDataCount
+}: HomeProps) => {
   const navigate = useNavigate();
 
   const openBookDetails = (id: string) => {
@@ -24,10 +37,17 @@ const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, f
 
   return (
     <>
-      <Header openCart={openCart} cartItemsCount={selectedBooks.length} />
       <div style={{ zIndex: 100 }}>
-        <FeaturedBooks books={featuredBooks} loading={featuredLoading} />
-        <Books books={books} addToCart={addToCartHandler} openBookDetails={openBookDetails} loading={dataLoading} />
+        {!isUserSearching && <FeaturedBooks books={featuredBooks} loading={featuredLoading} />}
+        <Books
+          books={books}
+          addToCart={addToCartHandler}
+          openBookDetails={openBookDetails}
+          loading={dataLoading}
+          isUserSearching={isUserSearching}
+          searchValue={searchValue}
+          searchDataCount={searchDataCount}
+        />
       </div>
     </>
   );
