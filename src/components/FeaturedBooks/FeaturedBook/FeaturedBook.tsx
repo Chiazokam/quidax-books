@@ -25,7 +25,7 @@ const Book = ({ book }: BookProps) => {
       onClick={openBookDetails}
     > 
       {showDescription && <BookHover book={book}/>}
-      <img alt='book' src={book.image_url as 'Maybe<string> | undefined'} className={styles.bookImage}/>
+      <img alt={book.title as string} src={book.image_url as string} className={styles.bookImage}/>
     </div>
   )
 }
