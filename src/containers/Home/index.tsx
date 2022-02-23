@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import FeaturedBooks from '../../components/FeaturedBooks';
 import Books from '../../components/Books';
+import { Books as Book} from '../../generated/graphql'
 
 type HomeProps = {
   openCart: React.MouseEventHandler<HTMLDivElement>;
-  selectedBooks: CartItem[];
-  addToCartHandler: (book: CartItem) => void;
-  books: BookType[];
+  selectedBooks: Book[];
+  addToCartHandler: (book: Book) => void;
+  books: Book[];
+  featuredBooks: Book[];
+  dataLoading: boolean;
 }
 
-const Home = ({ openCart, addToCartHandler, selectedBooks, books }: HomeProps) => {
+const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, featuredBooks }: HomeProps) => {
   const navigate = useNavigate();
 
   const openBookDetails = (id: string) => {
@@ -21,8 +24,10 @@ const Home = ({ openCart, addToCartHandler, selectedBooks, books }: HomeProps) =
   return (
     <>
       <Header openCart={openCart} cartItemsCount={selectedBooks.length} />
-      <FeaturedBooks books={books} />
-      <Books books={books} addToCart={addToCartHandler} openBookDetails={openBookDetails} />
+      <div style={{ zIndex: 100 }}>
+        <FeaturedBooks books={featuredBooks} loading={dataLoading} />
+        <Books books={books} addToCart={addToCartHandler} openBookDetails={openBookDetails} loading={dataLoading} />
+      </div>
     </>
   );
 }

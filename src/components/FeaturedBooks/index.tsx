@@ -3,26 +3,33 @@ import HorizontalLine from '../HorizontalLine';
 import styles from './FeaturedBooks.module.css';
 import FeaturedBook from './FeaturedBook/FeaturedBook';
 import Carousel from '../Carousel';
+import { Books } from '../../generated/graphql'
+import Skeleton from '../Skeleton'
 
 type FeaturedBooksProps = {
-  books: BookType[];
+  books: Books[];
+  loading: boolean;
 }
 
-const FeaturedBooks = ({ books }: FeaturedBooksProps) => {
+const FeaturedBooks = ({ books, loading }: FeaturedBooksProps) => {
   return (
     <div className={styles.container}>
       <span className={styles.text}>Featured Books</span>
       <div className={styles.featuredBooksLine}>
         <HorizontalLine />
       </div>
-      <Carousel itemCount={books.length}>
-        {books.map((book: BookType) => {
-          return (
-            <FeaturedBook key={book.id} book={book} />
-          )
-        })}
-      </Carousel>
-
+      {loading  ? 
+      [...new Array(3)].map((index) => <Skeleton key={index} />): 
+      <>
+        {books.length > 0 && <Carousel itemCount={books.length}>
+          {books.map((book: Books) => {
+            return (
+              <FeaturedBook key={book.id} book={book} />
+            )
+          })}
+        </Carousel>}
+      </>
+      }
     </div>
   )
 }

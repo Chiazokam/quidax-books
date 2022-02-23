@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { useBookQuery, Books } from '../../generated/graphql';
 import Header from '../../components/Header';
 import DetailsViewComponent from '../../components/DetailsView';
-import { books } from '../../utils/dummyBooks';
 
 type DetailsViewProps = {
   openCart: React.MouseEventHandler<HTMLDivElement>;
@@ -10,18 +10,27 @@ type DetailsViewProps = {
 
 const DetailsView = ({ openCart }: DetailsViewProps) => {
   const { id } = useParams();
-  const [book, setBook] = useState<BookType>()
+  const [book, setBook] = useState()
+  const { loading, error, data } = useBookQuery({
+    variables: { id: id as string }
+  })
 
   useEffect(() => {
-    const foundBook = books.find((book: BookType) => book.id === id)
-    setBook(foundBook)
-  }, [id])
+    if (data) {
+      // @ts-ignore
+      setBook(data.book)
+    }
+  }, [data])
+  
 
   return (
     <div style={{ height: '100%' }}>
       <Header openCart={openCart} cartItemsCount={3} />
 
-      <DetailsViewComponent book={book} openCart={openCart as unknown as React.MouseEventHandler<HTMLButtonElement> | undefined}/>
+      {book && <DetailsViewComponent
+        book={book}
+        openCart={openCart as unknown as React.MouseEventHandler<HTMLButtonElement> | undefined}
+      />}
 
     </div>
   )

@@ -8,7 +8,6 @@ const useStorage = (id: string) => {
     
     if (cartFromStorage) {
       const cart = JSON.parse(cartFromStorage);
-      console.log('existing in cart', cart)
       if (id in cart) {
         const initialNumberOfCopies = cart[id]; 
         setInitialNumberOfCopies(initialNumberOfCopies)
@@ -20,7 +19,6 @@ const useStorage = (id: string) => {
   }, [id])
 
   const persistCartItem = (item: { [x: string]: number; }) => {
-    console.log('I am being called ?????????????')
     const cartFromStorage = localStorage.getItem('cart');
     if (cartFromStorage) {
       const cart = JSON.parse(cartFromStorage);

@@ -4,11 +4,12 @@ import { ReactComponent as CartIcon } from '../../assets/whitecart.svg';
 import CartHeader from './CartHeader/CartHeader';
 import CartItem from './CartItem/CartItem';
 import Button from '../Button';
+import { Books } from '../../generated/graphql'
 
 type CartProps = {
   closeCart: React.MouseEventHandler<HTMLDivElement>;
   isCartOpen: Boolean;
-  selectedBooks: CartItem[];
+  selectedBooks: Books[];
   removeItemFromCart: Function;
   updateAvailableCopies: Function;
 }
@@ -26,7 +27,7 @@ const Cart = ({ closeCart, isCartOpen, selectedBooks, removeItemFromCart, update
     <div className={`${styles.cartWrapper} ${isCartOpen && styles.slideIn}`}>
       <CartHeader closeCart={closeCart} />
       <div className={styles.itemsWrapper}>
-      {selectedBooks.length > 0 ? selectedBooks.map((book: CartItem) => {
+      {selectedBooks.length > 0 ? selectedBooks.map((book: Books) => {
         return (
           <CartItem
             key={book.id}
