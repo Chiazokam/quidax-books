@@ -1,12 +1,13 @@
 import React from 'react';
 import { ReactComponent as People} from '../../assets/people.svg';
 import { ReactComponent as Love} from '../../assets/love.svg';
+import { InputMaybe } from '../../generated/graphql';
 import styles from './BookStats.module.css';
 
 type BookStatsProps = {
-  numberOfPurchases: Number;
-  likes: Number;
-  rating: Number;
+  numberOfPurchases: InputMaybe<number> | undefined;
+  likes: InputMaybe<number> | undefined;
+  rating: InputMaybe<number> | undefined;
   hasBlackIcons?: Boolean;
 }
 

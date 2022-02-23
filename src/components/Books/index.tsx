@@ -2,18 +2,23 @@ import React from 'react';
 import Book from './Book/Book';
 import styles from './Books.module.css';
 import HorizontalLine from '../HorizontalLine';
+import Skeleton from '../Skeleton'
+import { Books as BookType} from '../../generated/graphql'
 
 type BooksProps = {
   books: BookType[];
-  addToCart: (book: CartItem) => void;
+  addToCart: (book: BookType) => void;
   openBookDetails: Function;
+  loading: boolean;
 }
 
-const Books = ({ books, addToCart, openBookDetails }: BooksProps) => {
+const Books = ({ books, addToCart, openBookDetails, loading }: BooksProps) => {
   return (
     <div className={styles.container}>
       <span className={styles.text}>All Books</span>
       <HorizontalLine />
+      {
+        loading ? [...new Array(34)].map(() => <Skeleton />) : 
       <div className={styles.gridContainer}>
         {books.map((book: BookType) => {
           return (
@@ -27,6 +32,7 @@ const Books = ({ books, addToCart, openBookDetails }: BooksProps) => {
           )
         })}
       </div>
+      }
     </div>
   )
 }

@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookHover from '../BookHover/BookHover';
+import { Books } from '../../../generated/graphql'
 import styles from './FeaturedBook.module.css';
 
 type BookProps = {
-  book: BookType;
+  book: Books;
 }
 
 const Book = ({ book }: BookProps) => {
   const [showDescription, setShowDescription] = useState(false);
+  const navigate = useNavigate();
+
+  const openBookDetails = () => {
+    navigate(`books/${book.id}`);
+  }
+
   return (
     <div
       // Delay the display of hover
       className={styles.imageWrapper}
       onMouseEnter={() => setShowDescription(true)}
       onMouseLeave={() => setShowDescription(false)}
+      onClick={openBookDetails}
     > 
       {showDescription && <BookHover book={book}/>}
-      <img alt='book' src={book.image_url} className={styles.bookImage}/>
+      <img alt='book' src={book.image_url as 'Maybe<string> | undefined'} className={styles.bookImage}/>
     </div>
   )
 }

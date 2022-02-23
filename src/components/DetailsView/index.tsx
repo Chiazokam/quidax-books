@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './DetailsView.module.css';
 import LeftPane from './LeftPane/LeftPane';
+import { Books } from '../../generated/graphql';
 import RightPane from './RightPane/RightPane';
 
 type DetailsViewProps = {
-  book: BookType | undefined;
+  book: Books;
   openCart: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
@@ -12,8 +13,8 @@ const DetailsView = ({ book, openCart }: DetailsViewProps) => {
 
   return (
     <div className={styles.container}>
-      {book && <LeftPane book={book} openCart={openCart} />}
-      {book && <RightPane book={book}/>}
+      <LeftPane book={book} openCart={openCart} />
+      <RightPane book={book}/>
     </div>
   )
 }
