@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Books } from '../../../generated/graphql';
 import { ReactComponent as Back } from '../../../assets/back.svg';
 import Button from '../../Button';
+import Skeleton from '../../Skeleton'
 import { getCurrency } from '../../../utils/getCurrency';
 import styles from './LeftPane.module.css';
 

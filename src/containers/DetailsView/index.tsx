@@ -10,15 +10,14 @@ type DetailsViewProps = {
 
 const DetailsView = ({ openCart }: DetailsViewProps) => {
   const { id } = useParams();
-  const [book, setBook] = useState()
-  const { loading, error, data } = useBookQuery({
+  const [book, setBook] = useState<Books>()
+  const { loading, data } = useBookQuery({
     variables: { id: id as string }
   })
 
   useEffect(() => {
     if (data) {
-      // @ts-ignore
-      setBook(data.book)
+      setBook(data?.book as Books)
     }
   }, [data])
   

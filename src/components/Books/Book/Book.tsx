@@ -5,6 +5,7 @@ import Cart from '../../CartIcon/CartIcon';
 import { getCurrency } from '../../../utils/getCurrency';
 import { Books } from '../../../generated/graphql'
 import { getYear } from '../../../utils/getYear';
+import { sliceText } from '../../../utils/sliceText';
 
 type BookProps = {
   book: Books;
@@ -23,9 +24,9 @@ const Book = ({ book, addToCart, openBookDetails }: BookProps) => {
     <div className={styles.itemWrapper}>
       <div onClick={() => openBookDetails(id)} className={styles.image}><img alt='book' src={image_url as string | undefined} className={styles.bookImage as string | undefined}/></div>
       <div className={styles.bookDescription}>
-        <div className={styles.bookTitle}>{title}</div>
-        <div className={styles.author}>{authors?.map(author => author?.name).join(', ')} - {getYear(published_at)}</div>
-        {genres && <div className={styles.genre}>{genres?.map(genre => genre?.name).join(', ')}</div>}
+        {title && <div className={styles.bookTitle}>{sliceText(title, 26)}</div>}
+        {authors && <div className={styles.author}>{sliceText(authors?.map(author => author?.name).join(', '), 26)} - {getYear(published_at)}</div>}
+        {genres && <div className={styles.genre}>{sliceText(genres?.map(genre => genre?.name).join(', '), 26)}</div>}
 
         <BookStats numberOfPurchases={number_of_purchases} likes={likes} rating={rating} hasBlackIcons/>
         

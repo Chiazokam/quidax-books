@@ -12,9 +12,10 @@ type HomeProps = {
   books: Book[];
   featuredBooks: Book[];
   dataLoading: boolean;
+  featuredLoading: boolean;
 }
 
-const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, featuredBooks }: HomeProps) => {
+const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, featuredBooks, featuredLoading }: HomeProps) => {
   const navigate = useNavigate();
 
   const openBookDetails = (id: string) => {
@@ -25,7 +26,7 @@ const Home = ({ openCart, addToCartHandler, selectedBooks, books, dataLoading, f
     <>
       <Header openCart={openCart} cartItemsCount={selectedBooks.length} />
       <div style={{ zIndex: 100 }}>
-        <FeaturedBooks books={featuredBooks} loading={dataLoading} />
+        <FeaturedBooks books={featuredBooks} loading={featuredLoading} />
         <Books books={books} addToCart={addToCartHandler} openBookDetails={openBookDetails} loading={dataLoading} />
       </div>
     </>

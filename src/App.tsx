@@ -9,7 +9,7 @@ import { useBooksQuery, Books, useFeaturedBooksQuery } from './generated/graphql
 const App = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<Books[]>([]);
   const [featuredBooks, setFeaturedBooks] = useState([]);
   const [selectedBooks, setSelectedBooks] = useState<Books[]>([]);
   const { loading, error, data } = useBooksQuery()
@@ -17,8 +17,7 @@ const App = () => {
 
   useEffect(() => {
     if (data) {
-      // @ts-ignore
-      setBooks(data.books)
+      setBooks(data.books as Books[])
     }
   }, [data])
 
@@ -88,6 +87,7 @@ const App = () => {
                 addToCartHandler={addToCartHandler}
                 books={books}
                 featuredBooks={featuredBooks}
+                featuredLoading={featuredLoading}
                 dataLoading={loading}
               />
             }></Route>
