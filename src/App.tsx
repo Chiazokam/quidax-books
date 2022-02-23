@@ -4,29 +4,44 @@ import Home from './containers/Home';
 import Cart from './components/Cart';
 import CartBackdrop from './components/Cart/CartBackdrop/CartBackdrop';
 import DetailsView from './containers/DetailsView';
-import { useBooksQuery, Books, useFeaturedBooksQuery } from './generated/graphql';
+import Header from './components/Header';
+import { useBooksQuery, Books, useFeaturedBooksQuery, useSearchBooksQuery } from './generated/graphql';
 
 const App = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [books, setBooks] = useState<Books[]>([]);
-  const [featuredBooks, setFeaturedBooks] = useState([]);
+  const [featuredBooks, setFeaturedBooks] = useState<Books[]>([]);
   const [selectedBooks, setSelectedBooks] = useState<Books[]>([]);
+  const [searchValue, setSearchValue] = useState<string | undefined>();
+  const [isUserSearching, setIsUserSearching] = useState(false);
+
   const { loading, error, data } = useBooksQuery()
   const { loading: featuredLoading, error: featuredError, data: featuredData } = useFeaturedBooksQuery()
+  const { data: searchData } = useSearchBooksQuery({
+    skip: !searchValue,
+    variables: {
+      search: searchValue
+    }
+  })
 
   useEffect(() => {
     if (data) {
       setBooks(data.books as Books[])
     }
-  }, [data])
+  }, [data, searchValue])
 
   useEffect(() => {
     if (featuredData) {
-      //@ts-ignore
-      setFeaturedBooks(featuredData.books)
+      setFeaturedBooks(featuredData.books as Books[])
     }
   }, [data, featuredData])
+
+  useEffect(() => {
+    if (searchData) {
+      setBooks(searchData.books as Books[])
+    }
+  }, [searchData])
 
   const removeItemFromCart = (cartItem: Books) => {
     const newSelectedBooks = selectedBooks.filter((book: Books) => book.id !== cartItem.id);
@@ -62,8 +77,25 @@ const App = () => {
     setSelectedBooks([...selectedBooks, book])
   }
 
+  const handleSearchFieldChange = (value: string) => {
+    if (!value) {
+      setSearchValue(undefined)
+      setIsUserSearching(false);
+    } else {
+      setIsUserSearching(true);
+    }
+    setSearchValue(value);
+  }
+
   return (
       <div style={{ height: '100%' }}>
+      <Header
+        openCart={openCart}
+        cartItemsCount={selectedBooks.length}
+        handleSearchFieldChange={handleSearchFieldChange}
+        searchValue={searchValue}
+      />
+
         {isCartOpen && 
           <>
             <Cart
@@ -89,6 +121,9 @@ const App = () => {
                 featuredBooks={featuredBooks}
                 featuredLoading={featuredLoading}
                 dataLoading={loading}
+                isUserSearching={isUserSearching}
+                searchValue={searchValue}
+                searchDataCount={books.length}
               />
             }></Route>
           <Route path='books/:id' element={<DetailsView openCart={openCart} />} />

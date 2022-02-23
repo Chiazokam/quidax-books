@@ -1693,6 +1693,13 @@ export type BookQueryVariables = Exact<{
 
 export type BookQuery = { __typename?: 'Query', book?: { __typename?: 'Books', id: string, created_at: any, updated_at: any, title?: string | null, subtitle?: string | null, publisher?: string | null, release_date?: any | null, number_of_purchases?: number | null, likes?: number | null, rating?: number | null, price?: number | null, currency?: Enum_Books_Currency | null, available_copies?: number | null, full_description?: string | null, featured?: boolean | null, image_url?: string | null, published_at?: any | null, tags?: Array<{ __typename?: 'Tag', id: string, name?: string | null } | null> | null, genres?: Array<{ __typename?: 'Genre', id: string, name?: string | null } | null> | null, authors?: Array<{ __typename?: 'Author', id: string, name?: string | null } | null> | null } | null };
 
+export type SearchBooksQueryVariables = Exact<{
+  search?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type SearchBooksQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'Books', id: string, created_at: any, updated_at: any, title?: string | null, subtitle?: string | null, publisher?: string | null, release_date?: any | null, number_of_purchases?: number | null, likes?: number | null, rating?: number | null, price?: number | null, currency?: Enum_Books_Currency | null, available_copies?: number | null, full_description?: string | null, featured?: boolean | null, image_url?: string | null, published_at?: any | null, tags?: Array<{ __typename?: 'Tag', id: string, name?: string | null } | null> | null, genres?: Array<{ __typename?: 'Genre', id: string, name?: string | null } | null> | null, authors?: Array<{ __typename?: 'Author', id: string, name?: string | null } | null> | null } | null> | null };
+
 
 export const FeaturedBooksDocument = gql`
     query FeaturedBooks {
@@ -1874,3 +1881,66 @@ export function useBookLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookQ
 export type BookQueryHookResult = ReturnType<typeof useBookQuery>;
 export type BookLazyQueryHookResult = ReturnType<typeof useBookLazyQuery>;
 export type BookQueryResult = Apollo.QueryResult<BookQuery, BookQueryVariables>;
+export const SearchBooksDocument = gql`
+    query SearchBooks($search: String) {
+  books(where: {title: $search}) {
+    id
+    created_at
+    updated_at
+    title
+    subtitle
+    publisher
+    release_date
+    number_of_purchases
+    likes
+    rating
+    price
+    currency
+    available_copies
+    full_description
+    featured
+    image_url
+    published_at
+    tags(where: {name: $search}) {
+      id
+      name
+    }
+    genres(where: {name: $search}) {
+      id
+      name
+    }
+    authors(where: {name: $search}) {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useSearchBooksQuery__
+ *
+ * To run a query within a React component, call `useSearchBooksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchBooksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchBooksQuery({
+ *   variables: {
+ *      search: // value for 'search'
+ *   },
+ * });
+ */
+export function useSearchBooksQuery(baseOptions?: Apollo.QueryHookOptions<SearchBooksQuery, SearchBooksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchBooksQuery, SearchBooksQueryVariables>(SearchBooksDocument, options);
+      }
+export function useSearchBooksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchBooksQuery, SearchBooksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchBooksQuery, SearchBooksQueryVariables>(SearchBooksDocument, options);
+        }
+export type SearchBooksQueryHookResult = ReturnType<typeof useSearchBooksQuery>;
+export type SearchBooksLazyQueryHookResult = ReturnType<typeof useSearchBooksLazyQuery>;
+export type SearchBooksQueryResult = Apollo.QueryResult<SearchBooksQuery, SearchBooksQueryVariables>;

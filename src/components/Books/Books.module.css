@@ -6,6 +6,10 @@
   margin-right: 5.28rem;
 }
 
+.searchContainer {
+  padding-top: 13rem;
+}
+
 .text {
   color: var(--black);
   font-weight: 700;
@@ -25,4 +29,13 @@
 
 .gridItem:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.searchText {
+  margin-top: 2.7rem;
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 700;
 }
