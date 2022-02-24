@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Book.module.css';
 import BookStats from '../../BookStats/BookStats';
 import Cart from '../../CartIcon/CartIcon';
@@ -6,6 +6,7 @@ import { getCurrency } from '../../../utils/getCurrency';
 import { Books } from '../../../generated/graphql'
 import { getYear } from '../../../utils/getYear';
 import { sliceText } from '../../../utils/sliceText';
+import { CartContext } from '../../../contexts/CartContext';
 
 type BookProps = {
   book: Books;
@@ -14,10 +15,27 @@ type BookProps = {
 }
 
 const Book = ({ book, addToCart, openBookDetails }: BookProps) => {
-  const { id, title, authors, published_at, genres, number_of_purchases, likes, rating, price, available_copies, image_url, currency } = book;
+  const {
+    id,
+    title,
+    authors,
+    published_at,
+    genres,
+    number_of_purchases,
+    likes,
+    rating,
+    price,
+    available_copies,
+    image_url,
+    currency
+  } = book;
+
+
+  const cartContext = useContext(CartContext);
 
   const addBook = () => {
     addToCart(book)
+    cartContext.addSelectedBook(book)
   }
 
   return (

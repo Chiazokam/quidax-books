@@ -16,7 +16,6 @@ type BooksProps = {
 }
 
 const Books = ({ books, addToCart, openBookDetails, loading, isUserSearching, searchValue, searchDataCount }: BooksProps) => {
-  console.log(books, 'from the inner')
   return (
     <div className={`${styles.container} ${isUserSearching && styles.searchContainer}`}>
       {isUserSearching ?

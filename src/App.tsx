@@ -6,6 +6,7 @@ import CartBackdrop from './components/Cart/CartBackdrop/CartBackdrop';
 import DetailsView from './containers/DetailsView';
 import Header from './components/Header';
 import { useBooksQuery, Books, useFeaturedBooksQuery, useSearchBooksQuery } from './generated/graphql';
+import { CartProvider } from './contexts/CartContext';
 
 const App = () => {
 
@@ -88,6 +89,7 @@ const App = () => {
   }
 
   return (
+    <CartProvider>
       <div style={{ height: '100%' }}>
       <Header
         openCart={openCart}
@@ -101,7 +103,7 @@ const App = () => {
             <Cart
               closeCart={() => setIsCartOpen(false)}
               isCartOpen={isCartOpen}
-              selectedBooks={selectedBooks}
+              books={books}
               removeItemFromCart={removeItemFromCart}
               updateAvailableCopies={updateAvailableCopies}
             />
@@ -129,6 +131,7 @@ const App = () => {
           <Route path='books/:id' element={<DetailsView openCart={openCart} />} />
         </Routes>
       </div>
+    </CartProvider>
   );
 }
 
