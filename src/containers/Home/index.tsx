@@ -28,7 +28,7 @@ const Home = ({
   const navigate = useNavigate();
 
   const openBookDetails = (id: string) => {
-    navigate(`books/${id}`);
+    navigate(`${id}`);
   }
 
   return (

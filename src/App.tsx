@@ -78,8 +78,8 @@ const App = () => {
         }
         
         <Routes>
-          <Route 
-            index
+          <Route
+            path='books'
             element={
               <Home
                 openCart={openCart}

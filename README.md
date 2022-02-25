@@ -32,14 +32,13 @@ This will generate a `generated` folder with a `graphql.ts` file within that con
 - I would need to make the Skeleton appear better
 - I would need to put a loader component on the Details page
 - Responsiveness of the Entire App
-- Transition of the overlay on each book in the carousel
-- Transition of the Cart into and out of the page.
-- Search by `authors`, `tags`, `genres`
+- Transition effect of the overlay on each book in the carousel
+- Transition effect of the Cart into and out of the page.
 
 
 #### Issues Faced While completing the assignment
-- Querying the API to search other fields apart from the `title` field
-- Deployment
+- Querying the API to search other fields apart from the `title` field. This was resolved.
+- Deployment: This was resolved. 
 
 
 #### Constructive feedback

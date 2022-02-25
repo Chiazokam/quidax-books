@@ -105,45 +105,57 @@ query Book($id: ID!) {
 `;
 
 export const SEARCH_BOOKS = gql`
-  query SearchBooks($search: String) {
-    books (where: {
-      title: $search,
-    }) {
-      id
-      created_at
-      updated_at
-      title
-      subtitle
-      publisher
-      release_date
-      number_of_purchases
-      likes
-      rating
-      price
-      currency
-      available_copies
-      full_description
-      featured
-      image_url
-      published_at
-      tags (where: {
-        name: $search
-      }) {
-        id
-        name
+query SearchBooks(
+  $search: String,
+) {
+  books (where: {
+    _or: [
+      {
+        title: $search
+      },
+      {
+        _or: {
+          authors: { name: $search }
+        }
+      },
+      {
+        _or: {
+          genres: { name: $search }
+        }
+      },
+      {
+        _or: {
+          tags: { name: $search }
+        }
       }
-      genres (where: {
-        name: $search
-      }) {
-        id
-        name
-      }
-      authors(where: {
-        name: $search
-      }) {
-        id
-        name
-      }
+    ]
+  }) {
+    id
+    created_at
+    updated_at
+    title
+    subtitle
+    publisher
+    release_date
+    number_of_purchases
+    likes
+    rating
+    price
+    currency
+    available_copies
+    full_description
+    featured
+    image_url
+    published_at
+    authors {
+      name
+    }
+    genres {
+      name
+    }
+    tags {
+      name
     }
   }
+}
 `;
