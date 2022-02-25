@@ -7,13 +7,10 @@ import { sliceText } from '../../../utils/sliceText';
 
 type CartItemProps = {
   book: Books;
-  removeItemFromCart: Function;
-  updateAvailableCopies: Function;
-  addAllCartPrices: Function;
   countOfItem: number
 }
 
-const CartItem = ({ book, removeItemFromCart, updateAvailableCopies, addAllCartPrices, countOfItem }: CartItemProps) => {
+const CartItem = ({ book, countOfItem }: CartItemProps) => {
   const { id, image_url, price, title, authors } = book;
 
 
@@ -27,7 +24,7 @@ const CartItem = ({ book, removeItemFromCart, updateAvailableCopies, addAllCartP
           <div className={styles.description}>
             <div className={styles.title}>{sliceText(title as string, 26)}</div>
             {authors && <div className={styles.author}>{authors?.map(author => author?.name).join(', ')}</div>}
-            <div onClick={() => cartContext.removeBookFromCart(id)} className={styles.remove}>Remove</div>
+            <div onClick={() => cartContext.removeBookFromCart(id, book)} className={styles.remove}>Remove</div>
           </div>
         </div>
 

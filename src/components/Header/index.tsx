@@ -10,12 +10,11 @@ import styles from './Header.module.css';
 
 type HeaderProps = {
   openCart: React.MouseEventHandler<HTMLDivElement>;
-  cartItemsCount: number;
   handleSearchFieldChange: (value: string) => void;
   searchValue: string | undefined;
 }
 
-const Header = ({ openCart, cartItemsCount, handleSearchFieldChange, searchValue }: HeaderProps) => {
+const Header = ({ openCart, handleSearchFieldChange, searchValue }: HeaderProps) => {
   const cartContext = useContext(CartContext);
 
   return (

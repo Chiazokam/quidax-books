@@ -5,8 +5,6 @@ import Books from '../../components/Books';
 import { Books as Book } from '../../generated/graphql'
 
 type HomeProps = {
-  openCart: React.MouseEventHandler<HTMLDivElement>;
-  selectedBooks: Book[];
   addToCartHandler: (book: Book) => void;
   books: Book[];
   featuredBooks: Book[];
@@ -18,9 +16,7 @@ type HomeProps = {
 }
 
 const Home = ({
-  openCart,
   addToCartHandler,
-  selectedBooks,
   books,
   dataLoading,
   featuredBooks,

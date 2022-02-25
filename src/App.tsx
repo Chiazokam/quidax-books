@@ -13,12 +13,11 @@ const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [books, setBooks] = useState<Books[]>([]);
   const [featuredBooks, setFeaturedBooks] = useState<Books[]>([]);
-  const [selectedBooks, setSelectedBooks] = useState<Books[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [isUserSearching, setIsUserSearching] = useState(false);
 
-  const { loading, error, data } = useBooksQuery()
-  const { loading: featuredLoading, error: featuredError, data: featuredData } = useFeaturedBooksQuery()
+  const { loading, data } = useBooksQuery()
+  const { loading: featuredLoading, data: featuredData } = useFeaturedBooksQuery()
   const { data: searchData } = useSearchBooksQuery({
     skip: !searchValue,
     variables: {
@@ -44,29 +43,6 @@ const App = () => {
     }
   }, [searchData])
 
-  const removeItemFromCart = (cartItem: Books) => {
-    const newSelectedBooks = selectedBooks.filter((book: Books) => book.id !== cartItem.id);
-    setSelectedBooks(newSelectedBooks);
-  }
-
-  const updateAvailableCopies = (action: string, bookId: string) => {
-    // const bookIndex = books.findIndex((book: BookType) => book.id === bookId);
-    // const currentCopiesOfBook = books[bookIndex].available_copies;
-
-    // let newNumberOfCopies: number = currentCopiesOfBook;
-
-    // if (action === 'add' && currentCopiesOfBook > 0) {
-    //   newNumberOfCopies = currentCopiesOfBook - 1;
-    // }
-    // if (action === 'subtract') {
-    //   newNumberOfCopies = currentCopiesOfBook + 1;
-    // }
-
-    // const updatedBook = {...books[bookIndex], available_copies: newNumberOfCopies}
-    // books[bookIndex] = updatedBook;
-    // setBooks(() => books);
-  }
-
   const openCart = () => {
     setIsCartOpen(true)
   }
@@ -75,7 +51,6 @@ const App = () => {
     if (!isCartOpen) {
       setIsCartOpen(true);
     }
-    setSelectedBooks([...selectedBooks, book])
   }
 
   const handleSearchFieldChange = (value: string) => {
@@ -93,7 +68,6 @@ const App = () => {
       <div style={{ height: '100%' }}>
       <Header
         openCart={openCart}
-        cartItemsCount={selectedBooks.length}
         handleSearchFieldChange={handleSearchFieldChange}
         searchValue={searchValue}
       />
@@ -104,8 +78,6 @@ const App = () => {
               closeCart={() => setIsCartOpen(false)}
               isCartOpen={isCartOpen}
               books={books}
-              removeItemFromCart={removeItemFromCart}
-              updateAvailableCopies={updateAvailableCopies}
             />
             <CartBackdrop closeCart={() => setIsCartOpen(false)} />
           </>
@@ -116,8 +88,6 @@ const App = () => {
             index
             element={
               <Home
-                openCart={openCart}
-                selectedBooks={selectedBooks}
                 addToCartHandler={addToCartHandler}
                 books={books}
                 featuredBooks={featuredBooks}

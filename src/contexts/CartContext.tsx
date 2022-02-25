@@ -5,28 +5,33 @@ export type GlobalContent = {
   selectedBooks: Books[],
   addSelectedBook: any,
   totalPrice: number,
-  setTotalPrice:(price: number) => void,
   cartObject: {[key: string]: number},
   addOrSubtractItemInCart: any,
   removeBookFromCart: any,
-  getBooksMap: any
 }
 
 export const CartContext = createContext<GlobalContent>({
   selectedBooks: [],
   addSelectedBook: () => {},
   totalPrice: 0,
-  setTotalPrice: () => {},
   cartObject: {},
   addOrSubtractItemInCart: () => {},
   removeBookFromCart: () => {},
-  getBooksMap: () => {}
 });
 
 export const CartProvider = ({ children }: { children: any }) => {
   const [selectedBooks, setSelectedBooks] = useState<Books[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [cartObject, setCartObject] = useState<{[key: string]: number}>({});
+  
+  const calculateTotalPrice = (book: Books, removeBook?: boolean) => {
+      const bookPrice = book.price || 0;
+      if (removeBook) {
+        setTotalPrice((prev) => prev - bookPrice);
+      } else {
+        setTotalPrice((prev) => prev + bookPrice);
+      }
+  }
 
   const addSelectedBook = (book: Books) => {
     setSelectedBooks((prev) =>[...prev, book]);
@@ -36,17 +41,23 @@ export const CartProvider = ({ children }: { children: any }) => {
       if (cartObject[book.id] < available_copies) {
         cartObject[book.id] = cartObject[book.id] + 1;
         setCartObject(() => cartObject);
+        calculateTotalPrice(book)
       }
     } else {
       cartObject[book.id] = 1
       setCartObject(() => cartObject);
+      calculateTotalPrice(book)
     }
   }
 
-  const removeBookFromCart = (id: string) => {
+  const removeBookFromCart = (id: string, book: Books) => {
+    calculateTotalPrice(book, true)
     delete cartObject[id];
     const newSelectedBooks = selectedBooks.filter(book => book.id !== id)
     setCartObject({...cartObject})
+    if (Object.keys(cartObject).length === 0) {
+      setTotalPrice(0)
+    }
     setSelectedBooks([...newSelectedBooks])
   }
 
@@ -55,16 +66,15 @@ export const CartProvider = ({ children }: { children: any }) => {
     if (action === 'add' && cartObject[id] < available_copies) {
       cartObject[id] = cartObject[id] + 1;
       setCartObject({...cartObject});
-    } else if (action === 'subtract' && cartObject[id] > 1) {
+      calculateTotalPrice(book)
+      } else if (action === 'subtract' && cartObject[id] > 1) {
       cartObject[id] = cartObject[id] - 1;
       setCartObject({...cartObject});
+      calculateTotalPrice(book, true)
     } else if (action === 'subtract' && cartObject[id] === 1) {
-      removeBookFromCart(id);
+      calculateTotalPrice(book, true)
+      removeBookFromCart(id, book);
     }
-  }
-
-  const getBooksMap = (booksMap: any) => {
-    console.log(booksMap,'>>>>>>>>>>>>>>>')
   }
 
   return (
@@ -72,11 +82,9 @@ export const CartProvider = ({ children }: { children: any }) => {
       selectedBooks,
       addSelectedBook,
       totalPrice,
-      setTotalPrice,
       cartObject,
       addOrSubtractItemInCart,
       removeBookFromCart,
-      getBooksMap
     }}>
       {children}
     </CartContext.Provider>
