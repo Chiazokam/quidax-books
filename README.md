@@ -29,9 +29,9 @@ This will generate a `generated` folder with a `graphql.ts` file within that con
 
 
 #### Requirements Not Met (Including Things I Intended To Do but Could Not Do)
+- Responsiveness of the Entire App
 - I would need to make the Skeleton appear better
 - I would need to put a loader component on the Details page
-- Responsiveness of the Entire App
 - Transition effect of the overlay on each book in the carousel
 - Transition effect of the Cart into and out of the page.
 
@@ -42,3 +42,4 @@ This will generate a `generated` folder with a `graphql.ts` file within that con
 
 
 #### Constructive feedback
+No feedback
