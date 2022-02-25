@@ -1698,7 +1698,7 @@ export type SearchBooksQueryVariables = Exact<{
 }>;
 
 
-export type SearchBooksQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'Books', id: string, created_at: any, updated_at: any, title?: string | null, subtitle?: string | null, publisher?: string | null, release_date?: any | null, number_of_purchases?: number | null, likes?: number | null, rating?: number | null, price?: number | null, currency?: Enum_Books_Currency | null, available_copies?: number | null, full_description?: string | null, featured?: boolean | null, image_url?: string | null, published_at?: any | null, tags?: Array<{ __typename?: 'Tag', id: string, name?: string | null } | null> | null, genres?: Array<{ __typename?: 'Genre', id: string, name?: string | null } | null> | null, authors?: Array<{ __typename?: 'Author', id: string, name?: string | null } | null> | null } | null> | null };
+export type SearchBooksQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'Books', id: string, created_at: any, updated_at: any, title?: string | null, subtitle?: string | null, publisher?: string | null, release_date?: any | null, number_of_purchases?: number | null, likes?: number | null, rating?: number | null, price?: number | null, currency?: Enum_Books_Currency | null, available_copies?: number | null, full_description?: string | null, featured?: boolean | null, image_url?: string | null, published_at?: any | null, authors?: Array<{ __typename?: 'Author', name?: string | null } | null> | null, genres?: Array<{ __typename?: 'Genre', name?: string | null } | null> | null, tags?: Array<{ __typename?: 'Tag', name?: string | null } | null> | null } | null> | null };
 
 
 export const FeaturedBooksDocument = gql`
@@ -1883,7 +1883,9 @@ export type BookLazyQueryHookResult = ReturnType<typeof useBookLazyQuery>;
 export type BookQueryResult = Apollo.QueryResult<BookQuery, BookQueryVariables>;
 export const SearchBooksDocument = gql`
     query SearchBooks($search: String) {
-  books(where: {title: $search}) {
+  books(
+    where: {_or: [{title: $search}, {_or: {authors: {name: $search}}}, {_or: {genres: {name: $search}}}, {_or: {tags: {name: $search}}}]}
+  ) {
     id
     created_at
     updated_at
@@ -1901,16 +1903,13 @@ export const SearchBooksDocument = gql`
     featured
     image_url
     published_at
-    tags(where: {name: $search}) {
-      id
+    authors {
       name
     }
-    genres(where: {name: $search}) {
-      id
+    genres {
       name
     }
-    authors(where: {name: $search}) {
-      id
+    tags {
       name
     }
   }

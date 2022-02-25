@@ -17,3 +17,9 @@
 .activeDot {
   background-color: var(--light-green);
 }
+
+@media (min-width:320px)  {
+  .dot {
+    margin-right: 1.5rem;
+  }
+}
