@@ -10,11 +10,11 @@ import { CartContext } from '../../../contexts/CartContext';
 
 type BookProps = {
   book: Books;
-  addToCart: (book: Books) => void;
+  openCart: () => void;
   openBookDetails: Function;
 }
 
-const Book = ({ book, addToCart, openBookDetails }: BookProps) => {
+const Book = ({ book, openCart, openBookDetails }: BookProps) => {
   const {
     id,
     title,
@@ -34,9 +34,12 @@ const Book = ({ book, addToCart, openBookDetails }: BookProps) => {
   const cartContext = useContext(CartContext);
 
   const addBook = () => {
-    addToCart(book)
+    openCart()
     cartContext.addSelectedBook(book)
   }
+
+  const numberOfBooksInCart = cartContext.cartObject[id] || 0
+  const copiesOfBook = available_copies && available_copies - numberOfBooksInCart;
 
   return (
     <div className={styles.itemWrapper}>
@@ -50,9 +53,12 @@ const Book = ({ book, addToCart, openBookDetails }: BookProps) => {
         
         <div className={styles.price}>
           {getCurrency(currency)}{price} 
-          {available_copies === 0 ? <span className={styles.noCopies}>Out of Stock</span> : <span className={styles.copies}>{available_copies} Copies Available</span>}
+          {copiesOfBook === 0 ?
+            <span className={styles.noCopies}>Out of Stock</span> : 
+            <span className={styles.copies}>{copiesOfBook} {`Cop${copiesOfBook === 1 ? 'y' : 'ies'} Available`}</span>
+          }
         </div>
-        {(!!available_copies && available_copies > 0) &&
+        {(!!copiesOfBook && copiesOfBook > 0) &&
           <div className={styles.cart} onClick={addBook}>
             <Cart size='small'/>
             <span className={styles.addToCart}>Add to Cart</span>

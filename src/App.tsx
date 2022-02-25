@@ -47,12 +47,6 @@ const App = () => {
     setIsCartOpen(true)
   }
 
-  const addToCartHandler = (book: Books) => {
-    if (!isCartOpen) {
-      setIsCartOpen(true);
-    }
-  }
-
   const handleSearchFieldChange = (value: string) => {
     if (!value) {
       setSearchValue(undefined)
@@ -88,7 +82,7 @@ const App = () => {
             index
             element={
               <Home
-                addToCartHandler={addToCartHandler}
+                openCart={openCart}
                 books={books}
                 featuredBooks={featuredBooks}
                 featuredLoading={featuredLoading}

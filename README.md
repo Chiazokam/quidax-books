@@ -28,13 +28,13 @@ This will generate a `generated` folder with a `graphql.ts` file within that con
 - Because the data isn't being persisted, the cart is emptied each time the  page reloaded
 
 
-#### Requirements Not Met
+#### Requirements Not Met (Including Things I Intended To Do but Could Not Do)
 - I would need to make the Skeleton appear better
 - I would need to put a loader component on the Details page
 - Responsiveness of the Entire App
 - Transition of the overlay on each book in the carousel
 - Transition of the Cart into and out of the page.
-- Modifying the count of available boooks on each book on the `All Books` section when it is being added or removed from the cart
+- Search by `authors`, `tags`, `genres`
 
 
 #### Issues Faced While completing the assignment

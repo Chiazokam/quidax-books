@@ -5,7 +5,7 @@ import Books from '../../components/Books';
 import { Books as Book } from '../../generated/graphql'
 
 type HomeProps = {
-  addToCartHandler: (book: Book) => void;
+  openCart: () => void;
   books: Book[];
   featuredBooks: Book[];
   dataLoading: boolean;
@@ -16,7 +16,7 @@ type HomeProps = {
 }
 
 const Home = ({
-  addToCartHandler,
+  openCart,
   books,
   dataLoading,
   featuredBooks,
@@ -37,7 +37,7 @@ const Home = ({
         {!isUserSearching && <FeaturedBooks books={featuredBooks} loading={featuredLoading} />}
         <Books
           books={books}
-          addToCart={addToCartHandler}
+          openCart={openCart}
           openBookDetails={openBookDetails}
           loading={dataLoading}
           isUserSearching={isUserSearching}

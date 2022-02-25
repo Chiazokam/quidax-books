@@ -4,13 +4,13 @@ import { useBookQuery, Books } from '../../generated/graphql';
 import DetailsViewComponent from '../../components/DetailsView';
 
 type DetailsViewProps = {
-  openCart: React.MouseEventHandler<HTMLDivElement>;
+  openCart: () => void;
 }
 
 const DetailsView = ({ openCart }: DetailsViewProps) => {
   const { id } = useParams();
   const [book, setBook] = useState<Books>()
-  const { loading, data } = useBookQuery({
+  const { data } = useBookQuery({
     variables: { id: id as string }
   })
 
@@ -25,7 +25,7 @@ const DetailsView = ({ openCart }: DetailsViewProps) => {
     <div style={{ height: '100%' }}>
       {book && <DetailsViewComponent
         book={book}
-        openCart={openCart as unknown as React.MouseEventHandler<HTMLButtonElement> | undefined}
+        openCart={openCart}
       />}
 
     </div>
