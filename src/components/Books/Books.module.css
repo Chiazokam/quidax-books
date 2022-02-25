@@ -18,7 +18,7 @@
 
 .gridContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 30% 30% 30%;
   margin-top: 2.0rem;
 }
 
