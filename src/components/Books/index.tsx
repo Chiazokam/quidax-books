@@ -7,7 +7,7 @@ import { Books as BookType} from '../../generated/graphql'
 
 type BooksProps = {
   books: BookType[];
-  addToCart: (book: BookType) => void;
+  openCart: () => void;
   openBookDetails: Function;
   loading: boolean;
   isUserSearching: boolean;
@@ -15,8 +15,7 @@ type BooksProps = {
   searchDataCount: number;
 }
 
-const Books = ({ books, addToCart, openBookDetails, loading, isUserSearching, searchValue, searchDataCount }: BooksProps) => {
-  console.log(books, 'from the inner')
+const Books = ({ books, openCart, openBookDetails, loading, isUserSearching, searchValue, searchDataCount }: BooksProps) => {
   return (
     <div className={`${styles.container} ${isUserSearching && styles.searchContainer}`}>
       {isUserSearching ?
@@ -37,7 +36,7 @@ const Books = ({ books, addToCart, openBookDetails, loading, isUserSearching, se
               <Book
                 key={book.id}
                 book={book}
-                addToCart={addToCart}
+                openCart={openCart}
                 openBookDetails={openBookDetails}
               />
             </div>

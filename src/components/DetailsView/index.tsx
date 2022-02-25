@@ -6,7 +6,7 @@ import RightPane from './RightPane/RightPane';
 
 type DetailsViewProps = {
   book: Books;
-  openCart: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  openCart: () => void;
 }
 
 const DetailsView = ({ book, openCart }: DetailsViewProps) => {
